@@ -56,7 +56,7 @@ class StudentServiceTest {
             studentService.createStudent(student);
         });
 
-        assertEquals("Email id already exists try another one: nageena.sulthana@example.com", exception.getMessage());
+        assertEquals("Email id already exists: nageena.sulthana@example.com", exception.getMessage());
     }
 
     @Test
