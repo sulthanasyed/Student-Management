@@ -1,6 +1,7 @@
 package com.student.management.service;
 
 
+import com.student.management.exception.EmailAlreadyExistsException;
 import com.student.management.model.Student;
 import com.student.management.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class StudentService {
     public Student createStudent(Student student){
         Optional<Student> existing = studentRepository.findByEmail(student.getEmail());
         if(existing.isPresent()){
-            throw new RuntimeException("Email id already exists try another one: " + student.getEmail());
+            throw new EmailAlreadyExistsException(student.getEmail());
         }
         return studentRepository.save(student);
     }

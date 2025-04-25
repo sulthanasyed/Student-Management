@@ -30,8 +30,8 @@ class StudentServiceTest {
         MockitoAnnotations.openMocks(this);
         student = new Student();
         student.setId(1L);
-        student.setName("John Doe");
-        student.setEmail("john.doe@example.com");
+        student.setName("Nageena Sulthana");
+        student.setEmail("nageena.sulthana@example.com");
     }
 
     @Test
@@ -43,8 +43,8 @@ class StudentServiceTest {
         Student createdStudent = studentService.createStudent(student);
 
         assertNotNull(createdStudent);
-        assertEquals("John Doe", createdStudent.getName());
-        assertEquals("john.doe@example.com", createdStudent.getEmail());
+        assertEquals("Nageena Sulthana", createdStudent.getName());
+        assertEquals("nageena.sulthana@example.com", createdStudent.getEmail());
     }
 
     @Test
@@ -56,7 +56,7 @@ class StudentServiceTest {
             studentService.createStudent(student);
         });
 
-        assertEquals("Email id already exists try another one: john.doe@example.com", exception.getMessage());
+        assertEquals("Email id already exists try another one: nageena.sulthana@example.com", exception.getMessage());
     }
 
     @Test
@@ -128,15 +128,5 @@ class StudentServiceTest {
         // Verify delete method is called
         verify(studentRepository, times(1)).deleteById(student.getId());
     }
-//
-//    @Test
-//    void deleteStudent_ShouldThrowException_WhenStudentNotFound() {
-//        when(studentRepository.findById(student.getId())).thenReturn(Optional.empty());
-//
-//        Exception exception = assertThrows(RuntimeException.class, () -> {
-//            studentService.deleteStudent(student.getId());
-//        });
-//
-//        assertEquals("Student not found with id" + student.getId(), exception.getMessage());
-//    }
+
 }
